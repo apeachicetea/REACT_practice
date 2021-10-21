@@ -16,8 +16,7 @@ function App() {
     var newArray = [...글제목];
     //state를 deep copy
     //원본 레퍼런스 주소를 공유하지 않고, 복사 할 수 있다.
-    // newArray[0] = '여자 코트 추천';
-    newArray.sort();
+    newArray[0] = '여자 코트 추천';
     글제목변경(newArray);
 
   }
