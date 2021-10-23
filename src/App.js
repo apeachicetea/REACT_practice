@@ -9,6 +9,7 @@ function App() {
   //따봉변경(따봉을 대체할 데이터)
   let [modal, modal변경] = useState(false);
   let [누른제목, 누른제목변경] = useState(0);
+  let [입력값, 입력값변경] = useState('');
 
   function 모달변경함수() {
     modal변경(!modal);
@@ -41,7 +42,7 @@ function App() {
       
         글제목.map(function(el, i) {
           return (
-            <div className="list">
+            <div className="list" key={i}>
               <h3 onClick={ ()=>{ 누른제목변경(i) } }> { el } <span onClick={ 함수 }>🤙🏿</span> { 따봉 } </h3>
               <p>2월 17일 발행</p>
               <hr />
@@ -50,9 +51,22 @@ function App() {
         })
       
       }
+
       <button onClick={ ()=>{ 누른제목변경(0) } }>버튼1</button>
       <button onClick={ ()=>{ 누른제목변경(1) } }>버튼2</button>
       <button onClick={ ()=>{ 누른제목변경(2) } }>버튼3</button>
+
+      {/* { 입력값 }
+      <input onChange = { (e) => { 입력값변경(e.target.value) } } /> */}
+
+      <div className="publish">
+        <input onChange={ (e)=>{ 입력값변경(e.target.value) } } />
+        <button onClick={ ()=>{
+          let arrayCopy = [...글제목]; 
+          arrayCopy.unshift( 입력값 );
+          글제목변경(arrayCopy);
+        } }>저장</button>
+      </div>
 
       <button onClick={ 모달변경함수 }>열고닫기</button>
 
